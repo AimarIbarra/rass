@@ -9,11 +9,21 @@ GameObject::GameObject(int x, int y, int w, int h, SDL_Renderer *renderer,
   spriteSheet = TexManager::loadTexture(file, renderer);
 }
 
-// TODO: Take a Vector instead of two parameters
-// TODO: Change aceleration instead of position
-void GameObject::changePosition(int x, int y) {
-  destRect.x = x;
-  destRect.y = y;
+void GameObject::updateAccel(Vector *vect) {
+  accel.x += vect->x;
+  accel.y += vect->y;
+  delete vect;
+}
+
+void GameObject::updateVel(Vector *vect) {
+  vel.x += vect->x;
+  vel.y += vect->y;
+  delete vect;
+}
+
+void GameObject::updatePos() {
+  destRect.x += vel.x;
+  destRect.y += vel.y;
 }
 
 void GameObject::changeSize(int w, int h) {
