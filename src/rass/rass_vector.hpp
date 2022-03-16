@@ -1,10 +1,11 @@
 #pragma once
 
-template <class T> class Vector {
+class Vector {
 public:
-  Vector(T _x, T _y);
-  T x;
-  T y;
+  float x;
+  float y;
   void sumVector(Vector *vect);
   void mulVector(Vector *vect);
+  void subVector(Vector *vect);
+  void divVector(Vector *vect);
 };
