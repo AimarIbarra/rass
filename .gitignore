@@ -1,2 +1,4 @@
 *.exe
 tmp
+build/*.o
+build/rass/*.o
