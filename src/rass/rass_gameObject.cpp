@@ -23,7 +23,9 @@ void GameObject::changeSrc(int x, int y, int w, int h) {
 }
 
 void GameObject::render(SDL_Renderer *renderer) {
-  SDL_RenderCopy(renderer, spriteSheet, &srcRect, &destRect);
+  SDL_Rect *test;
+  srcRect.w == 0 ? test = NULL : test = &srcRect;
+  SDL_RenderCopy(renderer, spriteSheet, test, &destRect);
 }
 
 bool GameObject::destroy() { return destroyed; }

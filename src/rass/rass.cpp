@@ -9,20 +9,20 @@ std::vector<GameObject *> gameObjects;
 class Player : public GameObject {
 public:
   Player(int x, int y, SDL_Renderer *renderer, const char *file)
-      : GameObject(x, y, 32, 32, 0, 0, 32, 32, renderer, file){};
+      : GameObject(x, y, 32, 32, 0, 0, 0, 0, renderer, file){};
   void update() {
     if (Keyboard::getKey(SDL_SCANCODE_A)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_LEFT)->pressed)
-      destRect.x = -10;
+      destRect.x += -10;
     if (Keyboard::getKey(SDL_SCANCODE_D)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_RIGHT)->pressed)
-      destRect.x = 10;
+      destRect.x += 10;
     if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_UP)->pressed)
-      destRect.y = -10;
+      destRect.y += -10;
     if (Keyboard::getKey(SDL_SCANCODE_S)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_DOWN)->pressed)
-      destRect.y -= 10;
+      destRect.y += 10;
   }
 };
 
@@ -80,8 +80,6 @@ void Rass::update() {
     } else {
       // Update and render all objects that are to be done so
       gameObjects[i]->update();
-      gameObjects[i]->updateVel();
-      gameObjects[i]->updatePos();
       gameObjects[i]->render(renderer);
     }
   }
