@@ -13,16 +13,16 @@ public:
   void update() {
     if (Keyboard::getKey(SDL_SCANCODE_A)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_LEFT)->pressed)
-      accel.x = -1;
+      destRect.x = -10;
     if (Keyboard::getKey(SDL_SCANCODE_D)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_RIGHT)->pressed)
-      accel.x = 1;
+      destRect.x = 10;
     if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_UP)->pressed)
-      accel.y = -1;
+      destRect.y = -10;
     if (Keyboard::getKey(SDL_SCANCODE_S)->pressed ||
         Keyboard::getKey(SDL_SCANCODE_DOWN)->pressed)
-      accel.y = 1;
+      destRect.y -= 10;
   }
 };
 
