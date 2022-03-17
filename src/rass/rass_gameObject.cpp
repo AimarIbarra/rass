@@ -1,24 +1,18 @@
 #include "rass_gameObject.hpp"
 #include "rass_texManager.hpp"
 
-GameObject::GameObject(int x, int y, int w, int h, SDL_Renderer *renderer,
-                       const char *file) {
-  changePosition(x, y);
+GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
+                       int sh, SDL_Renderer *renderer, const char *file) {
+  destRect.x = x;
+  destRect.y = y;
   changeSize(w, h);
-  changeSrc(0, 0, w, h);
+  changeSrc(sw, sh, sw, sh);
   spriteSheet = TexManager::loadTexture(file, renderer);
 }
 
-void GameObject::updateAccel(Vector *vect) {
-  accel.x += vect->x;
-  accel.y += vect->y;
-  delete vect;
-}
-
-void GameObject::updateVel(Vector *vect) {
-  vel.x += vect->x;
-  vel.y += vect->y;
-  delete vect;
+void GameObject::updateVel() {
+  vel.x += accel.x;
+  vel.y += accel.y;
 }
 
 void GameObject::updatePos() {
