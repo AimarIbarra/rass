@@ -1,7 +1,6 @@
 #pragma once
 
 #include "rass.hpp"
-#include "rass_vector.hpp"
 
 class GameObject {
 public:
