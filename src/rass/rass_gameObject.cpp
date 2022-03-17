@@ -10,16 +10,6 @@ GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
   spriteSheet = TexManager::loadTexture(file, renderer);
 }
 
-void GameObject::updateVel() {
-  vel.x += accel.x;
-  vel.y += accel.y;
-}
-
-void GameObject::updatePos() {
-  destRect.x += vel.x;
-  destRect.y += vel.y;
-}
-
 void GameObject::changeSize(int w, int h) {
   destRect.w = w;
   destRect.h = h;
