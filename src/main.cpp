@@ -1,9 +1,30 @@
+// #include "config.h"
 #include "rass/rass.hpp"
+
+// All the custom objects
+#include "objects/objects.hpp"
 
 Rass *game = nullptr;
 
+#ifdef __EMSCRIPTEN__
+void tick() {
+  game->clear();
+  game->handleEvents();
+  game->update();
+  game->draw();
+}
+#endif
+void loadLevel() {
+  game->spawnObject(new Player(40, 40, game->rendering(), "assets/images/bot.png"));
+}
 int main(int argc, char *args[]) {
 
+  game = new Rass();
+  game->init("Rassengine", 0, 0, 800, 600, false);
+
+#ifdef __EMSCRIPTEN__
+  emscripten_set_main_loop(tick, 60, 1);
+#else
   const int FPS = 60;
   const int frameDelay = 1000 / FPS;
 
@@ -13,10 +34,8 @@ int main(int argc, char *args[]) {
 
   // The time difference between two frames
   int freeTime;
-
-  game = new Rass();
-  game->init("Rassengine", 0, 0, 800, 600, false);
-
+  
+  loadLevel();
   while (game->running()) {
     // The amount of milliseconds that have passed after
     // SDL has been initialized
@@ -35,6 +54,7 @@ int main(int argc, char *args[]) {
       SDL_Delay(frameDelay - freeTime);
     }
   }
+#endif
 
   game->clean();
 

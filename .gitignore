@@ -1,4 +1,5 @@
 *.exe
 tmp
-build/*.o
-build/rass/*.o
+build
+build-web
+*.out

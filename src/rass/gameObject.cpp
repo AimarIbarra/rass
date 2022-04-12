@@ -1,5 +1,5 @@
-#include "rass_gameObject.hpp"
-#include "rass_texManager.hpp"
+#include "gameObject.hpp"
+#include "helpers/texManager.hpp"
 
 GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
                        int sh, SDL_Renderer *renderer, const char *file) {

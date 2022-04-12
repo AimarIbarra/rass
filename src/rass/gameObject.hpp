@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rass.hpp"
+#include <SDL2/SDL.h>
 
 class GameObject {
 public:
