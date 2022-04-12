@@ -1,14 +1,21 @@
 #pragma once
 
-#include <SDL.h>
-#include <SDL_image.h>
+#ifdef __EMSCRIPTEN__
+  #include <emscripten/emscripten.h>
+#endif
+
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_image.h>
 #include <iostream>
 #include <vector>
+
+#include "gameObject.hpp"
+#include "helpers/helpers.hpp"
 
 class Rass {
   SDL_Window *window;
   SDL_Renderer *renderer;
-
+  static std::vector<GameObject *> gameObjects;
   bool isRunning;
 
 public:
@@ -23,5 +30,8 @@ public:
   void draw();
   void clean();
 
+  GameObject* spawnObject(GameObject* obj);
+
   bool running() { return isRunning; };
+  SDL_Renderer* rendering() { return renderer; };
 };

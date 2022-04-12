@@ -1,6 +1,6 @@
 #pragma once
 
-#include "rass.hpp"
+#include "../rass.hpp"
 
 class TexManager {
 public:

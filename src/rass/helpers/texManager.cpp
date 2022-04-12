@@ -1,4 +1,4 @@
-#include "rass_texManager.hpp"
+#include "texManager.hpp"
 
 SDL_Texture *TexManager::loadTexture(const char *file, SDL_Renderer *renderer) {
   // Load an image (SDL_image needed)

@@ -1,4 +1,4 @@
-#include "rass_keyboard.hpp"
+#include "keyboard.hpp"
 
 // Declare the space in memory for the key map
 std::map<SDL_Scancode, Key> Keyboard::keys;
