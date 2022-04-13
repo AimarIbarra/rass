@@ -9,8 +9,8 @@
 #include <iostream>
 #include <vector>
 
-#include "gameObject.hpp"
 #include "helpers/helpers.hpp"
+#include "core/core.hpp"
 
 class Rass {
   SDL_Window *window;

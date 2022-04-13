@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../rass.hpp"
+#include <SDL2/SDL_render.h>
+#include <SDL2/SDL_image.h>
 
 class TexManager {
 public:

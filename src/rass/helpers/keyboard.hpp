@@ -1,6 +1,7 @@
 #pragma once
 
-#include "../rass.hpp"
+#include <SDL2/SDL_keyboard.h>
+#include <SDL2/SDL_events.h>
 #include <map>
 
 // TODO: Add modifiers to the Key object

@@ -1,4 +1,4 @@
-#include "rass.hpp"
+#include "../rass.hpp"
 
 void Rass::update() {
   for (long unsigned int i = 0; i < gameObjects.size(); ++i) {

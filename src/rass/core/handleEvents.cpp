@@ -1,4 +1,4 @@
-#include "rass.hpp"
+#include "../rass.hpp"
 
 void Rass::handleEvents() {
   SDL_Event event;
