@@ -1,5 +1,4 @@
-#include "rass.hpp"
-#include "gameObject.hpp"
+#include "../rass.hpp"
 
 std::vector<GameObject *> Rass::gameObjects;
 

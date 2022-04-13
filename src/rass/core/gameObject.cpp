@@ -1,13 +1,12 @@
 #include "gameObject.hpp"
-#include "helpers/texManager.hpp"
 
 GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
-                       int sh, SDL_Renderer *renderer, const char *file) {
+                       int sh, SDL_Texture* texture) {
   destRect.x = x;
   destRect.y = y;
   changeSize(w, h);
   changeSrc(sw, sh, sw, sh);
-  spriteSheet = TexManager::loadTexture(file, renderer);
+  spriteSheet = texture;
 }
 
 void GameObject::changeSize(int w, int h) {

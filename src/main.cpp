@@ -1,8 +1,7 @@
 // #include "config.h"
+#include "helpers/helpers.hpp" // Helper functions
+#include "objects/objects.hpp" // Custom objects
 #include "rass/rass.hpp"
-
-// All the custom objects
-#include "objects/objects.hpp"
 
 Rass *game = nullptr;
 
@@ -14,13 +13,16 @@ void tick() {
   game->draw();
 }
 #endif
-void loadLevel() {
-  game->spawnObject(new Player(40, 40, game->rendering(), "assets/images/bot.png"));
-}
-int main(int argc, char *args[]) {
 
+void loadLevel() {
+  game->spawnObject(new Player(40, 40));
+  game->spawnObject(new Enemy(100, 100));
+}
+
+int main(int argc, char *args[]) {
   game = new Rass();
   game->init("Rassengine", 0, 0, 800, 600, false);
+  preload(game->rendering(), "assets/images/bot.png");
 
 #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop(tick, 60, 1);
@@ -34,7 +36,7 @@ int main(int argc, char *args[]) {
 
   // The time difference between two frames
   int freeTime;
-  
+
   loadLevel();
   while (game->running()) {
     // The amount of milliseconds that have passed after
