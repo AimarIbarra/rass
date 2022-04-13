@@ -1,0 +1,162 @@
+[
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/rass/helpers/keyboard.cpp.o",
+      "src/rass/helpers/keyboard.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/rass/helpers/keyboard.cpp",
+    "output": "/home/aiba/rass/build/src/rass/helpers/keyboard.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/rass/core/gameObject.cpp.o",
+      "src/rass/core/gameObject.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/rass/core/gameObject.cpp",
+    "output": "/home/aiba/rass/build/src/rass/core/gameObject.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/rass/core/handleEvents.cpp.o",
+      "src/rass/core/handleEvents.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/rass/core/handleEvents.cpp",
+    "output": "/home/aiba/rass/build/src/rass/core/handleEvents.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/rass/core/rass.cpp.o",
+      "src/rass/core/rass.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/rass/core/rass.cpp",
+    "output": "/home/aiba/rass/build/src/rass/core/rass.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/rass/core/update.cpp.o",
+      "src/rass/core/update.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/rass/core/update.cpp",
+    "output": "/home/aiba/rass/build/src/rass/core/update.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/main.cpp.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/main.cpp",
+    "output": "/home/aiba/rass/build/src/main.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/objects/player/player.cpp.o",
+      "src/objects/player/player.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/objects/player/player.cpp",
+    "output": "/home/aiba/rass/build/src/objects/player/player.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/objects/enemy/enemy.cpp.o",
+      "src/objects/enemy/enemy.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/objects/enemy/enemy.cpp",
+    "output": "/home/aiba/rass/build/src/objects/enemy/enemy.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/helpers/texManager.cpp.o",
+      "src/helpers/texManager.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/helpers/texManager.cpp",
+    "output": "/home/aiba/rass/build/src/helpers/texManager.cpp.o"
+  },
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/helpers/assets.cpp.o",
+      "src/helpers/assets.cpp"
+    ],
+    "directory": "/home/aiba/rass",
+    "file": "/home/aiba/rass/src/helpers/assets.cpp",
+    "output": "/home/aiba/rass/build/src/helpers/assets.cpp.o"
+  }
+]

@@ -9,13 +9,12 @@
 #include <iostream>
 #include <vector>
 
-#include "helpers/helpers.hpp"
-#include "core/core.hpp"
+#include "keyboard.hpp"
+#include "gameObject.hpp"
 
 class Rass {
   SDL_Window *window;
   SDL_Renderer *renderer;
-  static std::vector<GameObject *> gameObjects;
   bool isRunning;
 
 public:

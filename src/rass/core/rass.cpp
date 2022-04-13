@@ -1,6 +1,4 @@
-#include "../rass.hpp"
-
-std::vector<GameObject *> Rass::gameObjects;
+#include "rass.hpp"
 
 Rass::Rass() {}
 Rass::~Rass() {}

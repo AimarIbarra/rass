@@ -1,30 +1,25 @@
 #include "gameObject.hpp"
+#include <vector>
+
+std::vector<GameObject*> gameObjects;
 
 GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
                        int sh, SDL_Texture* texture) {
   destRect.x = x;
   destRect.y = y;
-  changeSize(w, h);
-  changeSrc(sw, sh, sw, sh);
+destRect.w = w;
+  destRect.h = h;
+  srcRect.x = sx;
+  srcRect.y = sy;
+  srcRect.w = sw;
+  srcRect.h = sh;
   spriteSheet = texture;
 }
 
-void GameObject::changeSize(int w, int h) {
-  destRect.w = w;
-  destRect.h = h;
-}
-
-void GameObject::changeSrc(int x, int y, int w, int h) {
-  srcRect.x = x;
-  srcRect.y = y;
-  srcRect.w = w;
-  srcRect.h = h;
-}
-
 void GameObject::render(SDL_Renderer *renderer) {
-  SDL_Rect *test;
-  srcRect.w == 0 ? test = NULL : test = &srcRect;
-  SDL_RenderCopy(renderer, spriteSheet, test, &destRect);
+  SDL_Rect *src;
+  srcRect.w == 0 ? src = NULL : src = &srcRect;
+  SDL_RenderCopy(renderer, spriteSheet, src, &destRect);
 }
 
 bool GameObject::destroy() { return destroyed; }

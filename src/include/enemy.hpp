@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../rass/core/gameObject.hpp"
-#include "../../helpers/assets.hpp"
+#include "gameObject.hpp"
+#include "assets.hpp"
 
 class Enemy : public GameObject {
 public:

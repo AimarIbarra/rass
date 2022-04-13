@@ -1,7 +1,6 @@
-// #include "config.h"
-#include "helpers/helpers.hpp" // Helper functions
-#include "objects/objects.hpp" // Custom objects
-#include "rass/rass.hpp"
+#include "helpers.hpp" // Helper functions
+#include "objects.hpp" // Custom objects
+#include "rass.hpp"
 
 Rass *game = nullptr;
 
