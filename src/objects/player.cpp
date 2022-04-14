@@ -1,24 +1,5 @@
 #include "keyboard.hpp"
-#include "player.hpp"
-#include <cmath>
-
-void Player::changeAccel(int x, int y) {
-  velX += x;
-  velY += y;
-  if (maxX < velX)
-    velX = maxX;
-  if (velX < -maxX)
-    velX = -maxX;
-  if (maxY < velY)
-    velY = maxY;
-  if (velY < -maxY)
-    velY = -maxY;
-}
-
-void Player::move() {
-  destRect.x += velX;
-  destRect.y += velY;
-}
+#include "objects/player.hpp"
 
 void Player::update() {
   int x = 0, y = 0;

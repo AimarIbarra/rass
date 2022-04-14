@@ -1,5 +1,5 @@
-#include "helpers.hpp" // Helper functions
-#include "objects.hpp" // Custom objects
+#include "helpers/helpers.hpp" // Helper functions
+#include "objects/objects.hpp" // Custom objects
 #include "rass.hpp"
 
 Rass *game = nullptr;
@@ -15,7 +15,7 @@ void tick() {
 
 void loadLevel() {
   game->spawnObject(new Player(40, 40));
-  game->spawnObject(new Enemy(100, 100));
+  game->spawnObject(new Enemy(200, 200));
 }
 
 int main(int argc, char *args[]) {

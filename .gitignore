@@ -2,3 +2,6 @@
 tmp
 build
 *.out
+.git
+.cache
+compile_commands.json

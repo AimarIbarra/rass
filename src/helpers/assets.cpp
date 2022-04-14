@@ -1,5 +1,5 @@
-#include "assets.hpp"
-#include "texManager.hpp"
+#include "helpers/assets.hpp"
+#include "helpers/texManager.hpp"
 #include <map>
 
 std::map<const char*, SDL_Texture*> assets;
