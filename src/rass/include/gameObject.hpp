@@ -20,5 +20,3 @@ protected:
   SDL_Rect destRect;
   SDL_Texture *spriteSheet;
 };
-
-extern std::vector<GameObject*> gameObjects;

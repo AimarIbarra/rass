@@ -1,18 +1,10 @@
 #include "gameObject.hpp"
 #include <vector>
 
-std::vector<GameObject*> gameObjects;
-
 GameObject::GameObject(int x, int y, int w, int h, int sx, int sy, int sw,
                        int sh, SDL_Texture* texture) {
-  destRect.x = x;
-  destRect.y = y;
-destRect.w = w;
-  destRect.h = h;
-  srcRect.x = sx;
-  srcRect.y = sy;
-  srcRect.w = sw;
-  srcRect.h = sh;
+  destRect = {.x = x, .y = y, .w = w, .h = h};
+  srcRect = {.x = sx, .y = sy, .w = sw, .h = sh};
   spriteSheet = texture;
 }
 

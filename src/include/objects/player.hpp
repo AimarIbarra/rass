@@ -3,11 +3,11 @@
 #include "gameObject.hpp"
 #include "helpers/assets.hpp"
 #include "objects/agile.hpp"
-#include "objects/shape.hpp"
 
-class Player : public Agile, public Shape {
+class Player : public Agile {
 public:
   Player(int x, int y)
-      : Agile(15, 15), GameObject(x, y, 32, 32, 0, 0, 0, 0, getTex("assets/images/bot.png")){};
+      : Agile(Vector(x, y), Vector(x, y) + Vector(32, 32), Vector(15, 15)),
+      GameObject(x, y, 32, 32, 0, 0, 0, 0, getTex("assets/images/bot.png")){};
   void update();
 };

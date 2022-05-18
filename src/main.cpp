@@ -1,6 +1,11 @@
+#include "gameObject.hpp"
 #include "helpers/helpers.hpp" // Helper functions
 #include "objects/objects.hpp" // Custom objects
 #include "rass.hpp"
+#include "gameVector.hpp"
+#include <vector>
+
+std::vector<Agile*> gameObjects;
 
 Rass *game = nullptr;
 
@@ -12,22 +17,34 @@ void tick() {
   game->draw();
 }
 #endif
+void setup() {
+  preload(game->rendering(), "assets/images/bot.png");
+}
 
 void loadLevel() {
-  game->spawnObject(new Player(40, 40));
-  game->spawnObject(new Enemy(200, 200));
+  gameObjects.push_back(new Player(40, 40));
+  gameObjects.push_back(new Enemy(200, 200));
+}
+
+void update() {
+  for (Agile* obj : gameObjects) {
+    obj->update();
+    obj->render(game->rendering());
+  }
 }
 
 int main(int argc, char *args[]) {
   game = new Rass();
   game->init("Rassengine", 0, 0, 800, 600, false);
-  preload(game->rendering(), "assets/images/bot.png");
+
+  setup();
 
 #ifdef __EMSCRIPTEN__
   emscripten_set_main_loop(tick, 60, 1);
 #else
-  const int FPS = 60;
-  const int frameDelay = 1000 / FPS;
+
+  constexpr int FPS = 60;
+  constexpr int frameDelay = 1000 / FPS;
 
   // Number between 0  and 2³² - 1
   // The frame we are in
@@ -44,7 +61,7 @@ int main(int argc, char *args[]) {
 
     game->clear();
     game->handleEvents();
-    game->update();
+    update();
     game->draw();
 
     freeTime = SDL_GetTicks() - initialFrame;

@@ -11,7 +11,7 @@ void Player::update() {
            Keyboard::getKey(SDL_SCANCODE_RIGHT)->pressed)
     x = 5;
   else
-    velX /= 1.1;
+    vel.x /= 1.1;
 
   // Y axis checking
   if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
@@ -21,8 +21,8 @@ void Player::update() {
            Keyboard::getKey(SDL_SCANCODE_DOWN)->pressed)
     y = 5;
   else
-    velY /= 1.1;
+    vel.y /= 1.1;
 
-  changeAccel(x, y);
+  changeAccel(Vector(x, y));
   move();
 }
