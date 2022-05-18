@@ -1,0 +1,18 @@
+[
+  {
+    "arguments": [
+      "/usr/sbin/g++",
+      "-Isrc/rass/include",
+      "-Isrc/include",
+      "-I/usr/include/SDL2",
+      "-D_REENTRANT",
+      "-c",
+      "-o",
+      "build/src/objects/agile.cpp.o",
+      "src/objects/agile.cpp"
+    ],
+    "directory": "/home/aiba/somas",
+    "file": "/home/aiba/somas/src/objects/agile.cpp",
+    "output": "/home/aiba/somas/build/src/objects/agile.cpp.o"
+  }
+]

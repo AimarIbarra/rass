@@ -1,6 +1,6 @@
-#include "../rass.hpp"
-
-std::vector<GameObject *> Rass::gameObjects;
+#include "rass.hpp"
+#include "gameObject.hpp"
+#include <vector>
 
 Rass::Rass() {}
 Rass::~Rass() {}
@@ -9,7 +9,7 @@ void Rass::init(const char *title, int x, int y, int w, int h,
                 bool fullscreen) {
   int flags = 0;
   if (fullscreen) {
-    flags = SDL_WINDOW_FULLSCREEN;
+    flags |= SDL_WINDOW_FULLSCREEN;
   }
 
   // Only initialize the needed subsystems to avoid errors
@@ -38,9 +38,4 @@ void Rass::clean() {
   SDL_DestroyWindow(window);
   SDL_DestroyRenderer(renderer);
   SDL_Quit();
-}
-
-GameObject* Rass::spawnObject(GameObject* obj) {
-  gameObjects.push_back(obj);
-  return obj;
 }

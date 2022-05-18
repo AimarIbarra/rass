@@ -9,13 +9,12 @@
 #include <iostream>
 #include <vector>
 
-#include "helpers/helpers.hpp"
-#include "core/core.hpp"
+#include "keyboard.hpp"
+#include "gameObject.hpp"
 
 class Rass {
   SDL_Window *window;
   SDL_Renderer *renderer;
-  static std::vector<GameObject *> gameObjects;
   bool isRunning;
 
 public:
@@ -25,12 +24,9 @@ public:
   void init(const char *title, int x, int y, int w, int h, bool fullscreen);
 
   void handleEvents();
-  void update();
   void clear();
   void draw();
   void clean();
-
-  GameObject* spawnObject(GameObject* obj);
 
   bool running() { return isRunning; };
   SDL_Renderer* rendering() { return renderer; };

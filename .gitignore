@@ -1,5 +1,7 @@
 *.exe
 tmp
 build
-build-web
 *.out
+.git
+.cache
+compile_commands.json
