@@ -19,8 +19,7 @@ void Rass::init(const char *title, int x, int y, int w, int h,
     // Creates the renderer
     renderer = SDL_CreateRenderer(window, -1, 0);
     if (renderer) {
-      // Since the game uses a dark color scheme the draw color is set to black
-      SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+      SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     }
 
     isRunning = true;

@@ -1,6 +1,5 @@
 #include "objects/agile.hpp"
 #include "gameVector.hpp"
-#include <iostream>
 
 void linesIntersect(const Vector &p, const Vector &q, const Vector &pv,
                     const Vector &qv, float &pt) {
@@ -13,7 +12,6 @@ void linesIntersect(const Vector &p, const Vector &q, const Vector &pv,
   float t = rv * qv / d;
 
   if (t > 0 && t < 1 && u > 0 && u < 1) {
-    std::cout << "Collision happened" << std::endl;
     pt = t;
   }
 }
