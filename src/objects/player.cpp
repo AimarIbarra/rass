@@ -1,9 +1,11 @@
-#include "keyboard.hpp"
 #include "objects/player.hpp"
+#include "keyboard.hpp"
+#ifdef DEBUG
+#include <iostream>
+#endif
 
 void Player::update() {
   int x = 0, y = 0;
-  // X axis checking
   if (Keyboard::getKey(SDL_SCANCODE_A)->pressed ||
       Keyboard::getKey(SDL_SCANCODE_LEFT)->pressed)
     x = -5;
@@ -13,16 +15,17 @@ void Player::update() {
   else
     vel.x /= 1.1;
 
-  // Y axis checking
-  if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
-      Keyboard::getKey(SDL_SCANCODE_UP)->pressed)
-    y = -5;
-  else if (Keyboard::getKey(SDL_SCANCODE_S)->pressed ||
-           Keyboard::getKey(SDL_SCANCODE_DOWN)->pressed)
-    y = 5;
-  else
-    vel.y /= 1.1;
+  if (!grounded) {
+    y += 3;
+  } else if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
+             Keyboard::getKey(SDL_SCANCODE_UP)->pressed) {
+    y = -30;
+  }
 
   changeAccel(Vector(x, y));
-  move();
+}
+
+bool Player::destroy() {
+  if (colliding == 1) return true;
+  return false;
 }

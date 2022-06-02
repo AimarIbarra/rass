@@ -1,4 +1,4 @@
-TARGET_EXEC ?= ../somas.exe
+TARGET_EXEC ?= somas.exe
 
 SRC_DIR ?= src
 BUILD_DIR ?= build
@@ -15,7 +15,7 @@ LDFLAGS := `sdl2-config --libs` -lSDL2_image
 CPPFLAGS := $(INC_FLAGS) `sdl2-config --cflags`
 
 # Executable
-$(BUILD_DIR)/$(TARGET_EXEC):	$(OBJS)
+$(TARGET_EXEC):	$(OBJS)
 	$(CXX) $(OBJS) -o $@ $(LDFLAGS)
 
 # C source
@@ -26,7 +26,11 @@ $(BUILD_DIR)/%.c.o:	%.c
 # CPP source
 $(BUILD_DIR)/%.cpp.o:	%.cpp
 	$(MKDIR_P) $(dir $@)
+ifdef DEBUG
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@ -D DEBUG
+else
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $< -o $@
+endif
 
 .PHONY:	clean
 

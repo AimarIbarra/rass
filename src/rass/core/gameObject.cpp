@@ -13,5 +13,3 @@ void GameObject::render(SDL_Renderer *renderer) {
   srcRect.w == 0 ? src = NULL : src = &srcRect;
   SDL_RenderCopy(renderer, spriteSheet, src, &destRect);
 }
-
-bool GameObject::destroy() { return destroyed; }

@@ -12,10 +12,9 @@ public:
   virtual ~GameObject(){};
   void render(SDL_Renderer *renderer);
   virtual void update(){};
-  bool destroy();
+  virtual bool destroy(){return 0;};
 
 protected:
-  bool destroyed = false;
   SDL_Rect srcRect;
   SDL_Rect destRect;
   SDL_Texture *spriteSheet;

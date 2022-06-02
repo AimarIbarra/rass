@@ -1,5 +1,8 @@
 #include "objects/agile.hpp"
 #include "gameVector.hpp"
+#ifdef DEBUG
+#include "iostream"
+#endif
 
 void linesIntersect(const Vector &p, const Vector &q, const Vector &pv,
                     const Vector &qv, float &pt) {
@@ -16,37 +19,34 @@ void linesIntersect(const Vector &p, const Vector &q, const Vector &pv,
   }
 }
 
-void resolveCollision(const Agile &a, const Agile &b, float &t) {
-  Vector relSpeed = a.vel - b.vel;
-  if (a.maxp.x <= b.minp.x)
-    linesIntersect(a.minp, b.minp - a.size, relSpeed,
-                   Vector(0, a.size.y + b.size.y),
+void Agile::resolveCollision(const AABB &b, const Vector &relSpeed, float &t) {
+  if (maxp.x <= b.minp.x)
+    linesIntersect(minp, b.minp - size, relSpeed, Vector(0, size.y + b.size.y),
                    t); // a rightmost and b leftmost
-  if (a.minp.x >= b.maxp.x)
-    linesIntersect(a.minp, b.maxp, relSpeed, Vector(0, -a.size.y - b.size.y),
+  if (minp.x >= b.maxp.x)
+    linesIntersect(minp, b.maxp, relSpeed, Vector(0, -size.y - b.size.y),
                    t); // a leftmost and b rightmost
-  if (a.maxp.y <= b.minp.y)
-    linesIntersect(a.minp, b.minp - a.size, relSpeed,
-                   Vector(a.size.x + b.size.x, 0),
-                   t); // a topmost and b bottommost
-  if (a.minp.y >= b.maxp.y)
-    linesIntersect(a.minp, b.maxp, relSpeed, Vector(-a.size.x - b.size.x, 0),
+  if (maxp.y <= b.minp.y)
+    linesIntersect(minp, b.minp - size, relSpeed, Vector(size.x + b.size.x, 0),
                    t); // a bottommost and b topmost
+  if (minp.y >= b.maxp.y)
+    linesIntersect(minp, b.maxp, relSpeed, Vector(-size.x - b.size.x, 0),
+                   t); // a topmost and b bottommost
 }
 
-uint8_t basicCol(const Agile &a, const Agile &b) {
+uint8_t Agile::basicCol(const AABB &b) {
   uint8_t result = 0b0000;
 
-  if (a.maxp.y >= b.minp.y && a.minp.y <= b.maxp.y) {
-    if (a.maxp.x == b.minp.x)
+  if (maxp.y >= b.minp.y && minp.y <= b.maxp.y) {
+    if (maxp.x == b.minp.x)
       result |= 0b0001; // right  (1)
-    if (a.minp.x == b.maxp.x)
+    if (minp.x == b.maxp.x)
       result |= 0b0100; // left   (4)
   }
-  if (a.maxp.x >= b.minp.x && a.minp.x <= b.maxp.x) {
-    if (a.maxp.y == b.minp.y)
+  if (maxp.x >= b.minp.x && minp.x <= b.maxp.x) {
+    if (maxp.y == b.minp.y)
       result |= 0b0010; // bottom (2)
-    if (a.minp.y == b.maxp.y)
+    if (minp.y == b.maxp.y)
       result |= 0b1000; // top    (8)
   }
 
@@ -65,26 +65,50 @@ void Agile::changeAccel(const Vector &accel) {
     vel.y = -maxVel.y;
 }
 
-void Agile::move() {
-  float t = 1;
-  for (Agile *other : gameObjects) {
-    if (*this != *other) {
-      uint8_t cols = basicCol(*this, *other);
-      if (cols) {
-        if (((cols & 1) && (vel.x > 0)) || ((cols & 4) && (vel.x < 0))) {
-          vel.x = 0;
-        }
-        if (((cols & 8) && (vel.y < 0)) || ((cols & 2) && (vel.y > 0))) {
-          vel.y = 0;
-        }
-      } else {
-        resolveCollision(*this, *other, t);
-      }
+
+void Agile::colSolve(const AABB *other, const Vector &relSpeed, float &t) {
+  uint8_t cols = basicCol(*other);
+  if (cols) {
+    if (((cols & 1) && (vel.x > 0)) || ((cols & 4) && (vel.x < 0))) {
+      vel.x = 0;
+      colliding = other->id();
+    }
+    if ((cols & 8) && (vel.y < 0)) {
+      vel.y = 0;
+      colliding = other->id();
+    }
+    if ((cols & 2) && (vel.y > 0)) {
+      grounded = 1;
+      vel.y = 0;
+      colliding = other->id();
     }
   }
-  destRect.x += (vel.x * t);
-  destRect.y += (vel.y * t);
-  *this += (vel * t);
-  if (t != 1)
+
+  float tmpT = 1;
+  resolveCollision(*other, relSpeed, tmpT);
+  if (tmpT < t) {
+    t = tmpT;
+    colliding = other->id();
+  }
+}
+
+void Agile::move() {
+  grounded = 0;
+
+  float t = 1;
+  for (Agile *other : gameObjects) {
+    if (*this == *other) continue;
+    colSolve(other, vel - other->vel, t);
+  }
+  for (AABB *other : terrains) {
+    colSolve(other, vel, t);
+  }
+
+  Vector adl(floor(vel.x * t), floor(vel.y * t));
+  destRect.x += adl.x;
+  destRect.y += adl.y;
+  *this += adl;
+  if (t != 1) {
     vel = Vector(0, 0);
+  }
 }
