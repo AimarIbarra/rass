@@ -30,7 +30,7 @@ void setup() {
 
 void loadLevel() {
   gameObjects.push_back(new Player(40, 40));
-  gameObjects.push_back(new Enemy(200, 200));
+//  gameObjects.push_back(new Enemy(200, 200));
   for (int i = 64; i < GAME_WIDTH - 64; i += 32) {
     terrains.push_back(new Terrain(i, GAME_HEIGHT - 32));
   }

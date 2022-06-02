@@ -19,6 +19,7 @@ void Player::update() {
     y += 3;
   } else if (Keyboard::getKey(SDL_SCANCODE_W)->pressed ||
              Keyboard::getKey(SDL_SCANCODE_UP)->pressed) {
+    grounded = 0;
     y = -30;
   }
 

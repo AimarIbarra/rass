@@ -5,7 +5,7 @@ std::map<SDL_Scancode, Key> Keyboard::keys;
 
 void Keyboard::updateKeys(SDL_KeyboardEvent *key) {
   Key *thisKey = getKey(key->keysym.scancode);
-  thisKey->pressed = !(key->type == SDL_KEYUP);
+  thisKey->pressed = (key->type != SDL_KEYUP);
 }
 
 Key *Keyboard::getKey(SDL_Scancode code) { return &keys[code]; }
