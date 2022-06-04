@@ -38,6 +38,20 @@ Vector operator * (const Vector &v, float n) {
   return Vector(v.x*n, v.y*n);
 }
 
+void Vector::linesIntersect(const Vector &p, const Vector &q, const Vector &pv,
+                    const Vector &qv, float &pt) {
+  Vector rv = q - p;
+
+  float n = rv * pv;
+  float d = pv * qv;
+
+  float u = n / d;
+  float t = rv * qv / d;
+  if (t > 0 && t < pt && u > 0 && u < 1) {
+    pt = t;
+  }
+}
+
 #ifdef DEBUG
 std::ostream& operator << (std::ostream &os, const Vector &v) {
   os << "(" << v.x << ", " << v.y << ")";

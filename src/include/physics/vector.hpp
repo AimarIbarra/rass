@@ -14,6 +14,7 @@ public:
   friend Vector operator - (const Vector &v1, const Vector &v2);
   friend int operator * (const Vector &v1, const Vector &v2);
   friend Vector operator * (const Vector &v, float n);
+  static void linesIntersect(const Vector &p, const Vector &q, const Vector &pv, const Vector &qv, float &pt);
 #ifdef DEBUG
   friend std::ostream& operator << (std::ostream &os, const Vector &v);
 #endif

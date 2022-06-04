@@ -6,9 +6,12 @@
 
 class Enemy : public Agile {
 public:
-  Enemy(int x, int y)
-      : GameObject(x, y, 64, 64, 0, 0, 0, 0, getTex("assets/images/bot.png")),
-        Agile(Vector(x, y), Vector(x, y) + 64, Vector(15, 15)){};
+  Enemy(int x, int y, int c_dir = 1);
   void update();
-  unsigned int id() const {return 1;}
+  unsigned int id() const {return 2;}
+  void onCols(AABB* other);
+
+protected:
+  Uint32 m_time;
+  int dir;
 };

@@ -26,7 +26,7 @@ void Player::update() {
   changeAccel(Vector(x, y));
 }
 
-bool Player::destroy() {
-  if (colliding == 1) return true;
-  return false;
+void Player::onCols(AABB *other) {
+  if (other->id() == 2) destroy = true;
+  if (other->id() == 3) other->destroy = true;
 }

@@ -12,7 +12,7 @@ public:
   virtual ~GameObject(){};
   void render(SDL_Renderer *renderer);
   virtual void update(){};
-  virtual bool destroy(){return 0;};
+  bool destroy = 0;
 
 protected:
   SDL_Rect srcRect;

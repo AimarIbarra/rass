@@ -1,6 +1,6 @@
 #include "helpers/texManager.hpp"
 
-SDL_Texture *TexManager::loadTexture(const char *file, SDL_Renderer *renderer) {
+SDL_Texture *TexManager::loadTexture(const char* file, SDL_Renderer *renderer) {
   // Load an image (SDL_image needed)
   SDL_Surface *surface = IMG_Load(file);
   // Turn the image into a texture

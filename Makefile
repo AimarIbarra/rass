@@ -12,7 +12,7 @@ INC_FLAGS := $(addprefix -I,$(INC_DIRS))
 
 LDFLAGS := `sdl2-config --libs` -lSDL2_image
 
-CPPFLAGS := $(INC_FLAGS) `sdl2-config --cflags`
+CPPFLAGS := $(INC_FLAGS) `sdl2-config --cflags` -O2 -MD
 
 # Executable
 $(TARGET_EXEC):	$(OBJS)
